@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Budget Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Budget Tracker</h1>
+    <form action="/add" method="post">
+        <label>Income: <input type="number" name="income" step="0.01" required></label><br>
+        <label>Expenses: <input type="number" name="expenses" step="0.01" required></label><br>
+        <button type="submit">Add Entry</button>
+    </form>
+
+    <h2>Saved Budget Entries</h2>
+    <table border="1">
+        <tr><th>Income</th><th>Expenses</th><th>Remaining</th></tr>
+        {% for row in entries %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
